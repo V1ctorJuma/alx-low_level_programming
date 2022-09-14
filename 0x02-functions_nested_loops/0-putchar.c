@@ -1,24 +1,19 @@
-/*
- * File: 0-putchar.c
- */
-
-#include <main.h>
+#include "main.h"
 /**
- * main - entry point 
- *
- * description : prints _putchar, followed by a new line
- *
- * return : always return 0
+ * main - Entry point
+ * description : Prints _putchar, followed by a new line
+ * Return: Always 0
  */
-
 int main(void)
 {
-	_putchar('V');
-	_putchar('\n');
+	_putchar('_');
+	_putchar('p');
+	_putchar('u');
+	_putchar('t');
+	_putchar('c');
+	_putchar('h');
+	_putchar('a');
+	_putchar('r');
 
 	return (0);
 }
-
-
-
-
