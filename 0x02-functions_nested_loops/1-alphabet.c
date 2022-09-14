@@ -1,12 +1,12 @@
 #include "main.h"
 /**
- * main - entry point
+ * print_alphabet - entry point
  *
- *Description: prints alphabet in lowercase followed by a new line
+ * Description: prints alphabet in lowercase followed by a new line
  *
  * Return: Always 0
  */
-int main(void)
+void print_alphabet(void)
 {
 	int letter;
 
