@@ -4,7 +4,7 @@
  * test_isalpha - Test the _isalpha function
  * @n: Number to pass to _isalpha function
  */
-void _isalpha(int n)
+int _isalpha(int n)
 {
 		int r;
 
