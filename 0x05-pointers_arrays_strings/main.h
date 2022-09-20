@@ -1,5 +1,6 @@
 #include <stdlib.h>
 
+void print_array(int *a, int n);
 void print_rev(char *s);
 int _putchar(char c);
 void reset_to_98(int *n);
