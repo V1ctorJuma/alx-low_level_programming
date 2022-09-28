@@ -1,29 +1,26 @@
 #include "main.h"
-int squareroot(int n, int i);
 /**
- * _sqrt_recursion - no loop, 1. 2nd function - checks for perfect square
- * @n: input
- * Return: Always 0 (Success)
+ * primenumber - checks if a given number is prime
+ * @n: given number
+ * @m: checker number
+ * Return: 1 if number is prime else 0
  */
-int _sqrt_recursion(int n)
+int primenumber(int n, int m)
 {
-	if (n < 0)
-		return (-1);
-	else
-		return (squareroot(n, (n + 1) / 2));
+	if (m == 1)
+		return (1);
+	if (n % m == 0)
+		return (0);
+	return (primenumber(n, m - 1));
 }
 /**
- * squareroot - checks if perfect square
- * @n: input
- * @i: counter
- * Return: if square root
+ * is_prime_number - checks if a given number is prime
+ * @n: given number
+ * Return: 1 if number is prime else 0
  */
-int squareroot(int n, int i)
+int is_prime_number(int n)
 {
-	if (i < 1)
-		return (-1);
-	else if (i * i == n)
-		return (i);
-	else
-		return (squareroot(n, i - 1));
+	if (n <= 1)
+		return (0);
+	return (primenumber(n, n / 2));
 }
