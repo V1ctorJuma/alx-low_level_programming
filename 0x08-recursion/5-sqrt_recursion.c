@@ -1,26 +1,39 @@
 #include "main.h"
 /**
- * primenumber - checks if a given number is prime
- * @n: given number
- * @m: checker number
- * Return: 1 if number is prime else 0
+ * sqtChecker - computes square root recursively doing binary search
+ * @min: inital number
+ * @max: last number within the limit of number
+ * @m: given number
+ * Return: 1 if not found sqrroot, else sqrroot
  */
-int primenumber(int n, int m)
+int sqtChecker(int min, int max, int m)
 {
-	if (m == 1)
-		return (1);
-	if (n % m == 0)
-		return (0);
-	return (primenumber(n, m - 1));
+	long int guess;
+
+	if (max >= min)
+	{
+		guess = min + (max - min) / 2;
+		if (guess * guess == m)
+			return (guess);
+/* following binary search */
+		if (guess * guess > m)
+			return (sqtChecker(min, guess - 1, m));
+		if (guess * guess < m)
+			return (sqtChecker(guess + 1, max, m));
+
+	}
+	return (-1);
 }
 /**
- * is_prime_number - checks if a given number is prime
+ * _sqrt_recursion - finds the natural square root of a number
  * @n: given number
- * Return: 1 if number is prime else 0
+ * Return: square root of n or -1
  */
-int is_prime_number(int n)
+int _sqrt_recursion(int n)
 {
-	if (n <= 1)
+	if (n < 0)
+		return (-1);
+	if (n == 0)
 		return (0);
-	return (primenumber(n, n / 2));
+	return (sqtChecker(1, n, n));
 }
