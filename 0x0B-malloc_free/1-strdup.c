@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include "main.h"
 /**
@@ -8,23 +7,35 @@
  */
 char *_strdup(char *str)
 {
-	int i, end;
-	char *array;
+	char *pointeur;
+	int i;
+	int count = 0;
 
+	/* in case if the given string is NULL*/
 	if (str == NULL)
 		return (NULL);
 
-	for (end = 0; end <= *str; end++)
+	/* finding the length of the given string*/
+	while (*(str + count))
+		count++;
+	/*allocation the needed dynamic memory area */
+	pointeur = malloc(sizeof(char) * (count + 1));
+
+	/* to verify if the pointer , pointed on the allocated memory*/
+	/* area is not NULL */
+	if (pointeur == NULL)
+		return (NULL);
+
+	/* initialization of i to avoid segment fault error*/
+	i = 0;
+
+	/* filling the allocated area with the bytes from the given string */
+	while (i <= count)
 	{
+		*(pointeur + i) = *(str + i);
+		i++;
 	}
 
-	end += 1;
-	array = malloc(sizeof(char) * end);
-
-	for (i = 0; i < end; i++)
-		array[i] = str[i];
-
-	if (array == NULL)
-		return (NULL);
-	return (array);
+	/* return a pointer to the string */
+	return (pointeur);
 }
