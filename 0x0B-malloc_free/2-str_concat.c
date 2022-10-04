@@ -9,37 +9,43 @@
  */
 char *str_concat(char *s1, char *s2)
 {
-	int end1, end2, i = 0;
-	char *array;
+	int size1 = 0;
+	int size2 = 0;
+	int i, j;
+	char *p;
 
-	if (s1 == NULL || s2 == NULL)
-		s1 = s2 = "";
+	if (s1 == NULL)
+		s1 = "";
+	if (s2 == NULL)
+		s2 = "";
 
-	for (end1 = 0; end1 <= *s1; end1++)
-	{
-	}
+	/* calculate the length of string 1*/
+	while (*(s1 + size1))
+		size1++;
+	/* calculate the length of the string 2 */
+	while (*(s2 + size2))
+		size2++;
 
-	for (end2 = 0; end2 <= *s2; end2++)
-	{
-	}
+	/* a pointer pointed to the memory area allocation*/
+	p = malloc((size1 + size2) + 1);
 
-	array = malloc(sizeof(char) * (end1 + end2 + 1));
-
-	if (array == NULL)
+	if (p == NULL)
 		return (NULL);
-
-	while (*s1)
+	i = 0;
+	/* copying the first string on the allocated memory*/
+	while (i < size1)
 	{
-		array[i] = *s1;
+		*(p + i) = *(s1 + i);
 		i++;
-		s1++;
 	}
 
-	while (*s2)
+	/* copying the second string */
+	j = 0;
+	while (j <= size2)
 	{
-		array[i] = *s2;
-		i++;
-		s2++;
+		*(p + j + size1) = *(s2 + j);
+		j++;
 	}
-	return (array);
+	/* the program return a pointer pointed */
+	return (p);
 }
