@@ -4,7 +4,7 @@
  * @s1: first string
  * @s2: second string
  * @n: limit of s2
- * Return: pointer to new space in memory of null
+ * Return: pointer to new space in memory or null
  **/
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
@@ -26,7 +26,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	i = 0;
 	while (s1[i])
 	{
-		comb[1] = s1[j];
+		comb[i] = s1[i];
 		i++;
 	}
 	for (j = 0; j < n && s2[j] != '\0'; j++)
@@ -36,5 +36,4 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	}
 	comb[i] = '\0';
 	return (comb);
-
 }
