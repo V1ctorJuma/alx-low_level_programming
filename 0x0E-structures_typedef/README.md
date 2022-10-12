@@ -26,7 +26,3 @@ What you should learn from this project:
 ### [5. How many legs does a dog have if you call his tail a leg? Four. Saying that a tail is a leg doesn't make it a leg](./5-free_dog.c)
 * Write a function that frees dogs.
 
----
-
-## Author
-* **Derrick Gee** - [kai-dg](https://github.com/kai-dg)
