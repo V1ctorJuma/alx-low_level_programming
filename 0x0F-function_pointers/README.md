@@ -22,6 +22,3 @@ What you should learn from this project:
 * Write a program that performs simple operations.
 
 ---
-
-## Author
-* **Derrick Gee** - [kai-dg](https://github.com/kai-dg)
