@@ -1,41 +1,50 @@
 #include "lists.h"
 
 /**
- * delete_dnodeint_at_index - delete node at index
- * @head: double pointer to head of node
- * @index: index to delete
- * Return: list with deleted node, 1 on success, -1 on fail
+ * delete_dnodeint_at_index - Deletes the node at idx of a double linked list
+ * @head: header of double linked list
+ * @index: index of the node, starting from 0
+ * Return: 1 if it succeeded, -1 if it failed
  */
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
-	unsigned int count = 0;
-	dlistint_t *temp = NULL;
+	dlistint_t *pre, *headcopy = *head;
+	unsigned int i;
 
-	if (head == NULL || *head == NULL)
-		return (-1);
-
-	temp = *head;
-
-	if (index == 0)
+	while (headcopy != NULL && headcopy->prev != NULL)
 	{
-		*head = (*head)->next;
-		if (*head != NULL)
-			(*head)->prev = NULL;
-		free(temp);
-		return (1);
+		headcopy = headcopy->prev;
+		*head = (*head)->prev;
 	}
-	while (temp->next != NULL)
+	if (headcopy != NULL && index != 0)
 	{
-		if (count == index)
+		for (i = 0; i < index && headcopy != NULL; i++)
 		{
-			temp->next->prev = temp->prev;
-			temp->prev->next = temp->next;
-			free(temp);
+			pre = headcopy;
+			headcopy = headcopy->next;
+		}
+		if (headcopy != NULL)
+		{
+			pre->next = headcopy->next;
+			if (pre->next != NULL)
+				headcopy->next->prev = pre;
+			free(headcopy);
 			return (1);
 		}
-		temp = temp->next;
-		count++;
+		return (-1);
 	}
-
+	if (headcopy != NULL && index == 0)
+	{
+		pre = headcopy->next;
+		if (pre == NULL)
+			*head = NULL;
+		else
+		{
+			pre->prev = NULL;
+			free(headcopy);
+			*head = pre;
+		}
+		return (1);
+	}
 	return (-1);
 }
